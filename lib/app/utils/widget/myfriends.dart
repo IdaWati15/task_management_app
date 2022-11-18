@@ -38,7 +38,7 @@ class MyFriends extends StatelessWidget {
                         ),
                         SizedBox(height: 400,child: GridView.builder(
                           shrinkWrap: true,
-                          itemCount: 8,
+                          itemCount: 9,
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:context.isPhone? 2 : 3, crossAxisSpacing: 20, mainAxisSpacing: 20), itemBuilder: (context,index){
                            return Column(children: [
                               ClipRRect(borderRadius: BorderRadius.circular(100),
