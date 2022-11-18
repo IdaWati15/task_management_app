@@ -121,14 +121,14 @@ class SideBar extends StatelessWidget {
             Container(
               height: 40,
               width: 100,
-              decoration: Get.currentRoute  == '/Friends' ? 
+              decoration: Get.currentRoute  == '/friends' ? 
               BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
               color: Colors.white,
               )
               : BoxDecoration(),
               child: Icon(
-                Get.currentRoute  == '/Friends' 
+                Get.currentRoute  == '/friends' 
                   ? Ionicons.heart
                   : Ionicons.heart_outline,
                 color: AppColors.primaryText,
