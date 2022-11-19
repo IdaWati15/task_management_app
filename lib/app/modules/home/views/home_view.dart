@@ -65,7 +65,7 @@ class HomeView extends GetView<HomeController> {
                 ),
                 ),
             Expanded(child: Container(
-              padding: !context.isPhone? EdgeInsets.all(50): EdgeInsets.all(0),
+              padding: !context.isPhone? EdgeInsets.all(50): EdgeInsets.all(20),
               margin: !context.isPhone? EdgeInsets.all(10): EdgeInsets.all(0),
               decoration: BoxDecoration(
               color: Colors.white,
@@ -90,7 +90,7 @@ class HomeView extends GetView<HomeController> {
                                      ),
                                           SizedBox(),
               //mystask
-              myTask(),
+              MyTask(),
             
                          ],
                        ),

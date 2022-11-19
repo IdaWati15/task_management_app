@@ -28,7 +28,7 @@ class UpcomingTask extends StatelessWidget {
                   children: [
                     Container(
                      //  width: 400,
-                     height: 200,
+                     height: 160,
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
                     color: AppColors.cardBg, ),
                     margin: EdgeInsets.all(10),

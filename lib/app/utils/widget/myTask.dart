@@ -4,8 +4,8 @@ import 'package:tas_management_app/app/utils/widget/sideBar.dart';
 import 'package:tas_management_app/app/utils/widget/style/AppColors.dart';
 
 
-class myTask extends SideBar{
-  const myTask({
+class MyTask extends SideBar{
+  const MyTask({
     Key? key,
   }) : super(key: key);
 
@@ -223,5 +223,6 @@ class myTask extends SideBar{
     
     ),
     );
+  
   }
 }
