@@ -27,6 +27,7 @@ class UpcomingTask extends StatelessWidget {
                   shrinkWrap: true,
                   children: [
                     Container(
+                      
                      //  width: 400,
                      height: 160,
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),

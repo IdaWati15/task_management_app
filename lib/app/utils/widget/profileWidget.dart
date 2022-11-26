@@ -16,7 +16,7 @@ class ProfileWidget extends StatelessWidget {
       child: ClipRRect(
            child: CircleAvatar(
             backgroundColor: Colors.amber, 
-            radius: 150,
+            radius: 120,
             foregroundImage: NetworkImage(
               'https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/09/27/08/jennifer-lawrence.jpg?quality=75&width=982&height=726&auto=webp%27',
            ),
@@ -27,6 +27,7 @@ class ProfileWidget extends StatelessWidget {
     Expanded
     (flex: 2,
       child: Column(
+
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children:[
