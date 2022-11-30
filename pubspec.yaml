@@ -11,6 +11,7 @@ dependencies:
   ionicons: 0.2.1
   firebase_core: 2.3.0
   firebase_auth: 4.1.4
+  google_sign_in: 5.4.2
   flutter: 
     sdk: flutter
 
