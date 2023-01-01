@@ -13,6 +13,7 @@ dependencies:
   cloud_firestore: 3.4.2
   firebase_auth: 3.5.1
   google_sign_in: 5.4.1
+  date_time_picker: 2.1.0
   flutter: 
     sdk: flutter
 
