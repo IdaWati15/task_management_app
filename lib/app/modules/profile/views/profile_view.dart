@@ -6,6 +6,7 @@ import 'package:tas_management_app/app/data/controller/auth_controller.dart';
 import 'package:tas_management_app/app/routes/app_pages.dart';
 import 'package:tas_management_app/app/utils/widget/header.dart';
 import 'package:tas_management_app/app/utils/widget/myTask.dart';
+import 'package:tas_management_app/app/utils/widget/peopleYouMayKnow.dart';
 import 'package:tas_management_app/app/utils/widget/profileWidget.dart';
 import 'package:tas_management_app/app/utils/widget/sideBar.dart';
 import 'package:tas_management_app/app/utils/widget/style/AppColors.dart';
@@ -14,7 +15,7 @@ import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
-  final authC =Get.find<AuthController>();
+  final authConn =Get.find<AuthController>();
   
   @override
   Widget build(BuildContext context) {
@@ -82,7 +83,7 @@ class ProfileView extends GetView<ProfileController> {
                       'Cancel'),
                     ), 
                   confirm:  ElevatedButton(
-                    onPressed: () => authC.logout(),  
+                    onPressed: () => authConn.logout(),  
                     child: const Text(
                       'Sign Out'),
                   ),
@@ -120,16 +121,16 @@ class ProfileView extends GetView<ProfileController> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                   ProfileWidget(),
-                    Text(
-                              'My Task', 
+                    const Text(
+                              'People You May Know', 
                               style: TextStyle(
                               color: AppColors.primaryText, 
                               fontSize: 30,
                   ),
                   ),
-                    SizedBox(height: 180, child: MyTask()),
+                    SizedBox(height: 180, child: PeopleYouMayKnow()),
                 ]),
               ),
             )

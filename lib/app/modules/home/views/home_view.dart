@@ -5,14 +5,19 @@ import 'package:ionicons/ionicons.dart';
 import 'package:tas_management_app/app/utils/widget/header.dart';
 import 'package:tas_management_app/app/utils/widget/myTask.dart';
 import 'package:tas_management_app/app/utils/widget/myfriends.dart';
+import 'package:tas_management_app/app/utils/widget/peopleYouMayKnow.dart';
 import 'package:tas_management_app/app/utils/widget/sideBar.dart';
 import 'package:tas_management_app/app/utils/widget/style/AppColors.dart';
 import 'package:tas_management_app/app/utils/widget/upcomingtask.dart';
+import 'package:tas_management_app/main.dart';
 
+import '../../../data/controller/auth_controller.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+  final authCon = Get.find<AuthController>();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,14 +78,13 @@ class HomeView extends GetView<HomeController> {
                             ),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(25),
-                              child: const CircleAvatar(
+                              child: CircleAvatar(
                                 backgroundColor: Colors.amber,
                                 radius: 20,
                                 foregroundImage: NetworkImage(
-                                  'https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/09/27/08/jennifer-lawrence.jpg?quality=75&width=982&height=726&auto=webp%27',
+                                 authCon.auth.currentUser!.photoURL!),
                                 ),
-                              ),
-                            ),
+                              )
                           ],
                         ),
                       ),
@@ -106,31 +110,33 @@ class HomeView extends GetView<HomeController> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'My Task',
+                                const Text (
+                                  'People You May Know',
                                   style: TextStyle(
                                     color: AppColors.primaryText,
                                     fontSize: 30,
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 20,
-                                ),
+                              
                                 //mystask
-                                MyTask(),
+                                PeopleYouMayKnow(),
                               ],
                             ),
                           ),
                           !context.isPhone
                               ? Expanded(
                                   child: Row(
+                                    crossAxisAlignment: 
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      UpcomingTask(),
+                                      MyTask(),
                                       MyFriends(),
                                     ],
                                   ),
                                 )
-                              : UpcomingTask(),
+                              : 
+                                    MyTask(),
+                                 
                         ]),
                   ),
                 ),

@@ -14,100 +14,97 @@ class MyFriends extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child:SingleChildScrollView(
-            child: Column (
-              children: [
-                Row(
-                  children: [
-                      const Text(
-                        'My Friends', 
-                        style: TextStyle(
-                          color: AppColors.primaryText, 
-                          fontSize: 30,
-                        ),
+        child: SingleChildScrollView(
+          child: Column (
+            children: [
+              Row(
+                children: [
+                    const Text(
+                      'My Friends', 
+                      style: TextStyle(
+                        color: AppColors.primaryText, 
+                        fontSize: 30,
                       ),
-                      const Spacer(),
-                       GestureDetector(
-                         onTap: ()=> Get.toNamed(Routes.FRIENDS),
-                         child: const Text(
-                          'more', 
-                          style: TextStyle
-                          (color: AppColors.primaryText, 
-                          fontSize: 25,
-                        ),
-                         ),
+                    ),
+                    const Spacer(),
+                     GestureDetector(
+                       onTap: ()=> Get.toNamed(Routes.FRIENDS),
+                       child: const Text(
+                        'more', 
+                        style: TextStyle
+                        (color: AppColors.primaryText, 
+                        fontSize: 25,
+                      ),
                        ),
-                      Icon(
-                        Ionicons.chevron_forward, 
-                        color: AppColors.primaryText,
-                      )
-                  ],
-                  ),
-                       const SizedBox(
-                        height: 20,
-                        ),
-                        StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-                          stream: authCon.streamFriends(),
-                           builder: (context, snapshot) {
-                             if (snapshot.connectionState == ConnectionState.waiting) {
-                             return const Center(child: CircularProgressIndicator
-                             ());
-                      }
+                     ),
+                    Icon(
+                      Ionicons.chevron_forward, 
+                      color: AppColors.primaryText,
+                    )
+                ],
+                ),
+                     const SizedBox(
+                      height: 20,
+                      ),
+                      StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                        stream: authCon.streamFriends(),
+                         builder: (context, snapshot) {
+                           if (snapshot.connectionState == ConnectionState.waiting) {
+                           return const Center(child: CircularProgressIndicator
+                           ());
+                    }
 
-                        var myfriends = (snapshot.data!.data() 
-                        as Map<String, dynamic>) ['emailFriends'] as List ;
+                      var myfriends = (snapshot.data!.data() 
+                      as Map<String, dynamic>) ['emailFriends'] as List ;
 
-                            return GridView.builder(
-                            shrinkWrap: true,
-                            itemCount: myfriends.length,
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount:context.isPhone? 2 : 3, 
-                              crossAxisSpacing: 20, 
-                              mainAxisSpacing: 20), 
-                            itemBuilder: (context,index){
-                             return StreamBuilder<
-                             DocumentSnapshot<Map<String, dynamic>>>(
-                               stream: authCon.streamUsers(myfriends[index]),
-                               builder: (context, snapshot2) {
-                                 if (snapshot.connectionState == ConnectionState.waiting) {
-                             return const Center(child: CircularProgressIndicator
-                             ());
-                                 }
-
-
-                            var data = snapshot2.data!.data();
-
-                                 return Column(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(100),
-                                               child: Image(
-                                                image : 
-                                                NetworkImage(
-                                                  data!['photo']),
-                                                  height: Get.width * 0.35,
-                                                  width: Get.width * 0.4,
-                                                  fit:  BoxFit.cover,
-                                               
-                                               ),
-                                    ),
-                                               Text(
-                                                data['name'],
-                                                style: 
-                                                const TextStyle(color: AppColors.primaryText),
-                                               ),
-                                 ],
-                                 );
+                          return GridView.builder(
+                          shrinkWrap: true,
+                          itemCount: myfriends.length,
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 20, 
+                            mainAxisSpacing: 20), 
+                          itemBuilder: (context,index){
+                           return StreamBuilder<
+                           DocumentSnapshot<Map<String, dynamic>>>(
+                             stream: authCon.streamUsers(myfriends[index]),
+                             builder: (context, snapshot2) {
+                               if (snapshot.connectionState == ConnectionState.waiting) {
+                           return const Center(child: CircularProgressIndicator
+                           ());
                                }
-                             );
-                          },
-                          );
-                           },
-                           )
-            ],
-            ),
+
+
+                          var data = snapshot2.data!.data();
+
+                               return Column(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(100),
+                                             child: Image(
+                                              image : 
+                                              NetworkImage(
+                                                data!['photo']),
+                                                height: 190,
+                                                width: 220,
+                                                fit:  BoxFit.cover,
+                                             
+                                             ),
+                                  ),
+                                             Text(
+                                              data['name'],
+                                              style: 
+                                              const TextStyle(color: AppColors.primaryText),
+                                             ),
+                               ],
+                               );
+                             }
+                           );
+                        },
+                        );
+                         },
+                         )
+          ],
           ),
         ),
       ),
